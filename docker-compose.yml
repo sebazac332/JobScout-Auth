@@ -8,24 +8,14 @@ services:
     ports:
       - "8001:8000"
     environment:
-      - DATABASE_URL=postgresql://postgres:postgres@auth-db:5432/authdb
+      - DATABASE_URL=postgresql://myuser:mypassword@db:5432/mydb
       - JWT_SECRET_KEY=supersecretkey
       - JWT_ALGORITHM=HS256
+    networks:
+      - jobscout_net
     depends_on:
-      - auth-db
+      - db
 
-  auth-db:
-    image: postgres:16
-    container_name: auth-db
-    restart: always
-    environment:
-      POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: postgres
-      POSTGRES_DB: authdb
-    ports:
-      - "5434:5432"
-    volumes:
-      - auth-db-data:/var/lib/postgresql/data
-
-volumes:
-  auth-db-data:
+networks:
+  jobscout_net:
+    external: true
