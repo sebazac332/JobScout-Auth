@@ -8,13 +8,11 @@ services:
     ports:
       - "8001:8000"
     environment:
-      - DATABASE_URL=postgresql://myuser:mypassword@db:5432/mydb
-      - JWT_SECRET_KEY=supersecretkey
-      - JWT_ALGORITHM=HS256
+      DATABASE_URL: "postgresql://myuser:mypassword@fastapi-db:5432/mydb"
+      SECRET_KEY: "SHARED_SECRET_KEY_123"
+      ALGORITHM: "HS256"
     networks:
       - jobscout_net
-    depends_on:
-      - db
 
 networks:
   jobscout_net:
