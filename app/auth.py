@@ -18,7 +18,7 @@ def login(form_data: OAuth2PasswordRequestForm = Depends(), db: Session = Depend
         raise HTTPException(status_code=401, detail="Invalid credentials")
 
     role = "admin" if admin else "user"
-    access_token = create_access_token({"sub": account.email, "role": role})
+    access_token = create_access_token({"sub": account.email, "role": role, "id": account.id})
     return {"access_token": access_token, "token_type": "bearer"}
 
 @router.get("/verify")
