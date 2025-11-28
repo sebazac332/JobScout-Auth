@@ -6,7 +6,7 @@ app = FastAPI(title="Authentication API")
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins="https://jobscout-frontend-production.up.railway.app",
+    allow_origins=["https://jobscout-frontend-production.up.railway.app"],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
