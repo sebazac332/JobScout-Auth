@@ -6,6 +6,7 @@ app = FastAPI(title="Authentication API")
 
 origins = [
     "http://localhost:3000",
+    "https://jobscout-frontend-production.up.railway.app",
 ]
 
 app.add_middleware(
